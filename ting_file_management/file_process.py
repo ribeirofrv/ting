@@ -1,9 +1,10 @@
 from ting_file_management.queue import Queue
 from ting_file_management.file_management import txt_importer
+import sys
+import os
 
 
 def process(path_file, instance: Queue):
-
     for item in range(len(instance)):
         file = instance.search(item)["nome_do_arquivo"]
         if file == path_file:
@@ -29,5 +30,10 @@ def remove(instance: Queue):
         print("Não há elementos")
 
 
-def file_metadata(instance, position):
-    pass
+def file_metadata(instance: Queue, position):
+    qsize = len(instance)
+    if 0 < qsize < position:
+        print("Posição inválida", file=sys.stderr)
+    else:
+        metadata = instance.search(position)
+        print(metadata)
