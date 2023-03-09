@@ -1,7 +1,6 @@
 from ting_file_management.queue import Queue
 from ting_file_management.file_management import txt_importer
 import sys
-import os
 
 
 def process(path_file, instance: Queue):
